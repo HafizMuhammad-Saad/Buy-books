@@ -66,7 +66,7 @@ ${cart.map(item => `• ${item.title} (Qty: ${item.quantity}) - ${formatPrice(it
 
 I have attached the payment screenshot. Please confirm my order. Thank you!`;
 
-    window.open(`https://wa.me/923001234567?text=${encodeURIComponent(message)}`, '_blank');
+    window.open(`https://wa.me/923062472977?text=${encodeURIComponent(message)}`, '_blank');
     
     toast.success('WhatsApp opened! Please send the screenshot to complete your order.');
   };
