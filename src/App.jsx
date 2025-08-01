@@ -7,7 +7,7 @@ import Home from './pages/Home';
 import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
-import Checkout from './pages/Checkout'; // We'll define this next
+import Checkout from './pages/Checkout';
 
 function App() {
   return (

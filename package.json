@@ -12,8 +12,6 @@
   "dependencies": {
     "@headlessui/react": "^2.2.7",
     "@heroicons/react": "^2.2.0",
-    "@stripe/react-stripe-js": "^3.8.1",
-    "@stripe/stripe-js": "^7.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.535.0",
     "react": "^19.1.0",

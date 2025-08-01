@@ -22,11 +22,12 @@ A complete, fully functional frontend for an e-commerce web application built wi
 - Order summary with tax and shipping calculations
 - Free shipping promotion for orders over $50
 
-### Checkout Page with Stripe Integration
-- Secure payment processing simulation
+### Checkout Page with Manual Payment Flow
+- Manual payment instructions for JazzCash and Easypaisa
 - Customer information and shipping address forms
-- Order summary and payment validation
-- Success/failure handling
+- Payment screenshot upload functionality
+- WhatsApp integration for order confirmation
+- Order ID generation and tracking
 
 ### Navigation and Routing
 - React Router for seamless navigation
@@ -45,7 +46,7 @@ A complete, fully functional frontend for an e-commerce web application built wi
 - **Vite** - Fast build tool and development server
 - **Tailwind CSS** - Utility-first CSS framework
 - **React Router DOM** - Client-side routing
-- **Stripe** - Payment processing integration
+- **Manual Payment System** - JazzCash/Easypaisa integration with WhatsApp
 - **React Context API** - State management
 - **React Hot Toast** - Elegant notifications
 - **Lucide React** - Beautiful icons
@@ -58,7 +59,6 @@ src/
 ├── components/          # Reusable UI components
 │   ├── Header.jsx      # Navigation header
 │   ├── ProductCard.jsx # Product display card
-│   ├── CheckoutForm.jsx# Stripe payment form
 │   └── LoadingSkeleton.jsx # Loading placeholders
 ├── pages/              # Page components
 │   ├── Home.jsx        # Landing page
@@ -124,11 +124,20 @@ npm run preview
 
 ## 🔧 Configuration
 
-### Stripe Integration
-For production use, replace the test Stripe publishable key in `src/pages/Checkout.jsx`:
+### Payment Integration
+To use this system in production, update the payment details in `src/pages/Checkout.jsx`:
+
+1. **Update Payment Numbers:**
+   - Replace `0300-XXXXXXX` with your actual JazzCash number
+   - Replace `0321-XXXXXXX` with your actual Easypaisa number
+   - Replace `Your Name` with the actual account holder name
+
+2. **Update WhatsApp Number:**
+   - Replace `923001234567` with your WhatsApp business number
 
 ```javascript
-const stripePromise = loadStripe('your-publishable-key-here');
+// In handleWhatsAppClick function
+window.open(`https://wa.me/YOUR_WHATSAPP_NUMBER?text=${encodeURIComponent(message)}`, '_blank');
 ```
 
 ### API Configuration
@@ -150,7 +159,7 @@ The app uses Fake Store API by default. To use a different API, modify the funct
 
 ## 🔒 Security Features
 
-- Secure payment processing with Stripe
+- Manual payment verification through WhatsApp
 - Input validation and sanitization
 - Safe localStorage usage
 - HTTPS ready for production
@@ -172,7 +181,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - [Fake Store API](https://fakestoreapi.com/) for providing mock data
 - [Tailwind CSS](https://tailwindcss.com/) for the amazing utility classes
 - [Lucide](https://lucide.dev/) for the beautiful icons
-- [Stripe](https://stripe.com/) for payment processing capabilities
+- [WhatsApp Business API](https://developers.facebook.com/docs/whatsapp) for messaging integration
 
 ## Expanding the ESLint configuration
 

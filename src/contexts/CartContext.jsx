@@ -11,7 +11,7 @@ const cartReducer = (state, action) => {
         items: action.payload,
       };
     case 'ADD_TO_CART':
-      const existingItem = state.items.find(item => item.id === action.payload.id);
+      { const existingItem = state.items.find(item => item.id === action.payload.id);
       if (existingItem) {
         const updatedItems = state.items.map(item =>
           item.id === action.payload.id
@@ -27,7 +27,7 @@ const cartReducer = (state, action) => {
           ...state,
           items: [...state.items, { ...action.payload, quantity: 1 }],
         };
-      }
+      } }
     case 'REMOVE_FROM_CART':
       return {
         ...state,
@@ -127,6 +127,7 @@ export const CartProvider = ({ children }) => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useCart = () => {
   const context = useContext(CartContext);
   if (!context) {

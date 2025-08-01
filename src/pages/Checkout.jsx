@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { loadStripe } from '@stripe/stripe-js';
-import { Elements } from '@stripe/react-stripe-js';
-import { Lock, CreditCard, ArrowLeft } from 'lucide-react';
+import { Lock, Upload, MessageCircle, ArrowLeft, CheckCircle, AlertCircle } from 'lucide-react';
 import { useCart } from '../contexts/CartContext';
 import { formatPrice } from '../utils/format';
-import CheckoutForm from '../components/CheckoutForm';
-
-// Replace with your actual Stripe publishable key
-const stripePromise = loadStripe('pk_test_51Rr0gS1TrEgzclR4ZXvTH0hqB95KOGN91BY04rCQhMOTpdqyIIUM3iQKhcYRgZS7AaA7yMj5wE7xAtVrdw4ghRuD00LvW77pu9'); // This is a test key
+import toast from 'react-hot-toast';
 
 const Checkout = () => {
-  const { cart, getCartTotal, clearCart } = useCart();
+  const { cart, getCartTotal } = useCart();
   const navigate = useNavigate();
-  const [clientSecret, setClientSecret] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [paymentScreenshot, setPaymentScreenshot] = useState(null);
+  const [customerInfo, setCustomerInfo] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    address: ''
+  });
+  const [orderId] = useState(() => 'ORD-' + Date.now().toString().slice(-8));
 
   const subtotal = getCartTotal();
   const shipping = subtotal > 50 ? 0 : 9.99;
@@ -26,41 +27,49 @@ const Checkout = () => {
       navigate('/cart');
       return;
     }
-
-    // In a real application, you would create a payment intent on your backend
-    // For this demo, we'll simulate this
-    const createPaymentIntent = async () => {
-      setLoading(true);
-      try {
-        // Simulate API call to create payment intent
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        // In real app, this would come from your backend
-        setClientSecret('pi_3NkNn3KUEt7Gabcdef_secret_ABC123xyz456');
-      } catch (error) {
-        console.error('Error creating payment intent:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    createPaymentIntent();
   }, [cart, navigate]);
 
-  const appearance = {
-    theme: 'stripe',
-    variables: {
-      colorPrimary: '#0ea5e9',
-    },
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setCustomerInfo((prev) => ({ ...prev, [name]: value }));
   };
 
-  const options = {
-    clientSecret,
-    appearance,
+  const handleScreenshotChange = (e) => {
+    const file = e.target.files[0];
+    setPaymentScreenshot(file);
   };
 
-  if (cart.length === 0) {
-    return null;
-  }
+  const handleWhatsAppClick = () => {
+    if (!paymentScreenshot) {
+      toast.error('Please upload the payment screenshot first!');
+      return;
+    }
+
+    if (!customerInfo.name || !customerInfo.phone || !customerInfo.address) {
+      toast.error('Please fill in all required customer information!');
+      return;
+    }
+
+    const message = `Hello! I have made the payment for my order.
+
+*Order Details:*
+Order ID: ${orderId}
+Total Amount: ${formatPrice(total)}
+
+*Customer Information:*
+Name: ${customerInfo.name}
+Phone: ${customerInfo.phone}
+${customerInfo.email ? `Email: ${customerInfo.email}\n` : ''}Address: ${customerInfo.address}
+
+*Items Ordered:*
+${cart.map(item => `• ${item.title} (Qty: ${item.quantity}) - ${formatPrice(item.price * item.quantity)}`).join('\n')}
+
+I have attached the payment screenshot. Please confirm my order. Thank you!`;
+
+    window.open(`https://wa.me/923001234567?text=${encodeURIComponent(message)}`, '_blank');
+    
+    toast.success('WhatsApp opened! Please send the screenshot to complete your order.');
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -123,33 +132,170 @@ const Checkout = () => {
             </div>
           </div>
 
-          {/* Payment Form */}
+          {/* Payment Instructions */}
           <div className="bg-white shadow-sm rounded-lg p-6">
             <div className="flex items-center mb-6">
               <Lock className="w-5 h-5 text-green-600 mr-2" />
               <h2 className="text-xl font-semibold text-gray-900">
-                Secure Checkout
+                Manual Payment
               </h2>
             </div>
 
-            {loading ? (
-              <div className="text-center py-8">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600 mx-auto"></div>
-                <p className="mt-2 text-gray-600">Setting up secure payment...</p>
+            {/* Order Information */}
+            <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <h3 className="text-lg font-medium text-blue-900 mb-2">Order Details</h3>
+              <p className="text-blue-800">Order ID: <span className="font-mono font-bold">{orderId}</span></p>
+              <p className="text-blue-800">Total Amount: <span className="font-bold">{formatPrice(total)}</span></p>
+            </div>
+
+            {/* Customer Information Form */}
+            <div className="mb-6">
+              <h3 className="text-lg font-medium text-gray-900 mb-4">Customer Information</h3>
+              <div className="grid grid-cols-1 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={customerInfo.name}
+                    onChange={handleInputChange}
+                    className="input-field"
+                    placeholder="Enter your full name"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Phone Number *
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={customerInfo.phone}
+                    onChange={handleInputChange}
+                    className="input-field"
+                    placeholder="03XX-XXXXXXX"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={customerInfo.email}
+                    onChange={handleInputChange}
+                    className="input-field"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Shipping Address *
+                  </label>
+                  <textarea
+                    name="address"
+                    value={customerInfo.address}
+                    onChange={handleInputChange}
+                    className="input-field"
+                    rows="3"
+                    placeholder="Enter your complete address"
+                    required
+                  />
+                </div>
               </div>
-            ) : clientSecret ? (
-              <Elements options={options} stripe={stripePromise}>
-                <CheckoutForm total={total} onPaymentSuccess={() => {
-                  clearCart();
-                  navigate('/');
-                }} />
-              </Elements>
-            ) : (
-              <div className="text-center py-8">
-                <CreditCard className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-600">Preparing checkout...</p>
+            </div>
+
+            {/* Payment Instructions */}
+            <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+              <h3 className="text-lg font-medium text-green-900 mb-3">Payment Instructions</h3>
+              <p className="text-sm text-green-800 mb-3">
+                Please make a payment of <span className="font-bold">{formatPrice(total)}</span> to one of the following accounts:
+              </p>
+              
+              <div className="space-y-4">
+                {/* JazzCash */}
+                <div className="bg-white p-3 rounded border border-green-300">
+                  <div className="flex items-center mb-2">
+                    <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center mr-3">
+                      <span className="text-white text-xs font-bold">JC</span>
+                    </div>
+                    <span className="font-semibold text-gray-900">JazzCash</span>
+                  </div>
+                  <p className="text-gray-700">Number: <span className="font-mono font-bold">0300-XXXXXXX</span></p>
+                  <p className="text-gray-700">Account Holder: <span className="font-semibold">Your Name</span></p>
+                </div>
+                
+                {/* Easypaisa */}
+                <div className="bg-white p-3 rounded border border-green-300">
+                  <div className="flex items-center mb-2">
+                    <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-3">
+                      <span className="text-white text-xs font-bold">EP</span>
+                    </div>
+                    <span className="font-semibold text-gray-900">Easypaisa</span>
+                  </div>
+                  <p className="text-gray-700">Number: <span className="font-mono font-bold">0321-XXXXXXX</span></p>
+                  <p className="text-gray-700">Account Holder: <span className="font-semibold">Your Name</span></p>
+                </div>
               </div>
-            )}
+              
+              <div className="mt-3 p-2 bg-yellow-100 border border-yellow-300 rounded">
+                <p className="text-xs text-yellow-800">
+                  <strong>Note:</strong> Please mention Order ID <span className="font-mono">{orderId}</span> in the transaction message.
+                </p>
+              </div>
+            </div>
+
+            {/* Upload Payment Screenshot */}
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Upload Payment Screenshot *
+              </label>
+              <input
+                type="file"
+                accept="image/*"
+                className="input-field w-full"
+                onChange={handleScreenshotChange}
+                required
+              />
+            </div>
+
+            {/* Send on WhatsApp Button */}
+            <button
+              onClick={handleWhatsAppClick}
+              className={`w-full py-3 px-4 text-white rounded-lg font-medium transition-colors duration-200 ${
+                !paymentScreenshot || !customerInfo.name || !customerInfo.phone || !customerInfo.address
+                  ? 'bg-gray-400 cursor-not-allowed'
+                  : 'bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2'
+              }`}
+              disabled={!paymentScreenshot || !customerInfo.name || !customerInfo.phone || !customerInfo.address}
+            >
+              <MessageCircle className="w-5 h-5 inline mr-2" />
+              Send Screenshot on WhatsApp
+            </button>
+
+            {/* Status Messages */}
+            <div className="mt-2 space-y-1">
+              {!paymentScreenshot && (
+                <p className="text-red-500 text-sm">
+                  <AlertCircle className="inline w-4 h-4 mr-1" /> Payment screenshot is required
+                </p>
+              )}
+              {(!customerInfo.name || !customerInfo.phone || !customerInfo.address) && (
+                <p className="text-red-500 text-sm">
+                  <AlertCircle className="inline w-4 h-4 mr-1" /> Please fill in all required customer information
+                </p>
+              )}
+              {paymentScreenshot && customerInfo.name && customerInfo.phone && customerInfo.address && (
+                <p className="text-green-500 text-sm">
+                  <CheckCircle className="inline w-4 h-4 mr-1" /> Ready to send order details
+                </p>
+              )}
+            </div>
 
             <div className="mt-6 pt-6 border-t border-gray-200">
               <div className="flex items-center justify-center space-x-4 text-sm text-gray-500">
@@ -171,3 +317,4 @@ const Checkout = () => {
 };
 
 export default Checkout;
+
