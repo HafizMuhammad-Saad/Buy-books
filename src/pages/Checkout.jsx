@@ -4,6 +4,7 @@ import { Lock, Upload, MessageCircle, ArrowLeft, CheckCircle, AlertCircle } from
 import { useCart } from '../contexts/CartContext';
 import { formatPrice } from '../utils/format';
 import toast from 'react-hot-toast';
+import axios from 'axios';
 
 const Checkout = () => {
   const { cart, getCartTotal } = useCart();
@@ -39,7 +40,7 @@ const Checkout = () => {
     setPaymentScreenshot(file);
   };
 
-  const handleWhatsAppClick = () => {
+  const handleWhatsAppClick = async () => {
     if (!paymentScreenshot) {
       toast.error('Please upload the payment screenshot first!');
       return;
@@ -50,7 +51,19 @@ const Checkout = () => {
       return;
     }
 
-    const message = `Hello! I have made the payment for my order.
+    try {
+      const formData = new FormData();
+      formData.append('orderId', orderId);
+      formData.append('customerInfo', JSON.stringify(customerInfo));
+      formData.append('items', JSON.stringify(cart));
+      formData.append('pricing', JSON.stringify({ subtotal, shipping, tax, total }));
+      formData.append('paymentScreenshot', paymentScreenshot);
+
+      await axios.post('http://localhost:5000/api/orders', formData, {
+        headers: {'Content-Type': 'multipart/form-data'}
+      });
+
+      const message = `Hello! I have made the payment for my order.
 
 *Order Details:*
 Order ID: ${orderId}
@@ -66,9 +79,18 @@ ${cart.map(item => `• ${item.title} (Qty: ${item.quantity}) - ${formatPrice(it
 
 I have attached the payment screenshot. Please confirm my order. Thank you!`;
 
-    window.open(`https://wa.me/923062472977?text=${encodeURIComponent(message)}`, '_blank');
-    
-    toast.success('WhatsApp opened! Please send the screenshot to complete your order.');
+      window.open(`https://wa.me/923062472977?text=${encodeURIComponent(message)}`, '_blank');
+      
+      toast.success('WhatsApp opened! Please send the screenshot to complete your order.');
+      navigate('/cart');
+    } catch (error) {
+      console.error(error);
+      toast.error('Failed to save order. Please try again.');
+    } finally {
+      setPaymentScreenshot(null);
+      setCustomerInfo({ name: '', email: '', phone: '', address: '' });
+      
+    }
   };
 
   return (
