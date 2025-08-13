@@ -1,88 +1,176 @@
+// Your own product data - Educational Books and Materials
+export const localProducts = [
+  {
+    id: 1,
+    title: "Brainy Builder A3 - Complete Set",
+    price: 299.99,
+    image: "/a3/Brainy Builder a3/Artboard 4.jpg",
+    level: "A3",
+    category: "workbook",
+    description: "Comprehensive A3 workbook set covering all essential topics for grade 3 students with engaging activities and colorful illustrations."
+  },
+  {
+    id: 2,
+    title: "Mathematics 1-7 Series",
+    price: 199.99,
+    image: "/a3/maths 1-7/Artboard 1 copy.jpg",
+    level: "1-7",
+    category: "mathematics",
+    description: "Complete mathematics series from grade 1 to 7 with progressive learning approach and practical examples."
+  },
+  {
+    id: 3,
+    title: "Science Explorer 1-7",
+    price: 249.99,
+    image: "/a3/science 1-7/Artboard 1.jpg",
+    level: "1-7",
+    category: "science",
+    description: "Interactive science series covering physics, chemistry, and biology with hands-on experiments and real-world applications."
+  },
+  {
+    id: 4,
+    title: "A4 Art Concept Series",
+    price: 179.99,
+    image: "/a4/Art Concept Title/Artboard 1.jpg",
+    level: "A4",
+    category: "art",
+    description: "Creative art workbook series designed to enhance artistic skills and creative thinking for grade 4 students."
+  },
+  {
+    id: 5,
+    title: "Islamiat Studies A4",
+    price: 159.99,
+    image: "/a4/Islamiat Title/Artboard 4.jpg",
+    level: "A4",
+    category: "islamiat",
+    description: "Comprehensive Islamic studies workbook covering Quran, Hadith, and Islamic history for grade 4 students."
+  },
+  {
+    id: 6,
+    title: "English Readers Collection",
+    price: 129.99,
+    image: "/a4/readers/Artboard 1.jpg",
+    level: "A4",
+    category: "readers",
+    description: "Engaging English reader series with phonics, vocabulary building, and comprehension exercises."
+  },
+  {
+    id: 7,
+    title: "Urdu Readers Collection",
+    price: 129.99,
+    image: "/a4/readers/Urdu back.jpg",
+    level: "A4",
+    category: "readers",
+    description: "Comprehensive Urdu reader series with poetry, stories, and language exercises for grade 4 students."
+  },
+  {
+    id: 8,
+    title: "Workbook Collection A3",
+    price: 349.99,
+    image: "/a3/workbook/Artboard 1.jpg",
+    level: "A3",
+    category: "workbook",
+    description: "Complete A3 workbook collection covering all subjects with practice exercises and assessment tools."
+  },
+  {
+    id: 9,
+    title: "Mathematics Practice Book 1-7",
+    price: 89.99,
+    image: "/a3/maths 1-7/Artboard 9.jpg",
+    level: "1-7",
+    category: "mathematics",
+    description: "Additional practice book for mathematics with challenging problems and detailed solutions."
+  },
+  {
+    id: 10,
+    title: "Science Lab Manual 1-7",
+    price: 119.99,
+    image: "/a3/science 1-7/Artboard 2.jpg",
+    level: "1-7",
+    category: "science",
+    description: "Hands-on science lab manual with step-by-step experiments and safety guidelines."
+  },
+  {
+    id: 11,
+    title: "Brainy Builder Workbook Set",
+    price: 399.99,
+    image: "/a3/Brainy Builder a3/Artboard 4 copy.jpg",
+    level: "A3",
+    category: "workbook",
+    description: "Premium workbook set with laminated pages and interactive learning tools for grade 3."
+  },
+  {
+    id: 12,
+    title: "Art & Craft Activity Book A4",
+    price: 149.99,
+    image: "/a4/Art Concept Title/Artboard 1 copy.jpg",
+    level: "A4",
+    category: "art",
+    description: "Creative art and craft activity book with supplies and step-by-step instructions."
+  }
+];
+
+// Categories based on your educational content
+export const localCategories = [
+  "workbook",
+  "mathematics", 
+  "science",
+  "art",
+  "islamiat",
+  "readers"
+];
+
+// Replace API calls with local data
 export const fetchProducts = async () => {
   try {
-    const response = await fetch('https://fakestoreapi.com/products');
-    const products = await response.json();
-    return products;
+    // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 500));
+    return localProducts;
   } catch (error) {
-    console.error('Error fetching products:', error);
-    // Fallback mock data
-    return [
-      {
-        id: 1,
-        title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-        price: 109.95,
-        description: "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-        category: "men's clothing",
-        image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-        rating: { rate: 3.9, count: 120 }
-      },
-      {
-        id: 2,
-        title: "Mens Casual Premium Slim Fit T-Shirts",
-        price: 22.3,
-        description: "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing.",
-        category: "men's clothing",
-        image: "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
-        rating: { rate: 4.1, count: 259 }
-      },
-      {
-        id: 3,
-        title: "Mens Cotton Jacket",
-        price: 55.99,
-        description: "Great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors.",
-        category: "men's clothing",
-        image: "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
-        rating: { rate: 4.7, count: 500 }
-      },
-      {
-        id: 4,
-        title: "Mens Casual Slim Fit",
-        price: 15.99,
-        description: "The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.",
-        category: "men's clothing",
-        image: "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
-        rating: { rate: 2.1, count: 430 }
-      },
-      {
-        id: 5,
-        title: "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
-        price: 695,
-        description: "From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.",
-        category: "jewelery",
-        image: "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
-        rating: { rate: 4.6, count: 400 }
-      },
-      {
-        id: 6,
-        title: "Solid Gold Petite Micropave",
-        price: 168,
-        description: "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States.",
-        category: "jewelery",
-        image: "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
-        rating: { rate: 3.9, count: 70 }
-      }
-    ];
+    console.error('Error loading products:', error);
+    return localProducts; // Always return local data as fallback
   }
 };
 
 export const fetchProductById = async (id) => {
   try {
-    const response = await fetch(`https://fakestoreapi.com/products/${id}`);
-    const product = await response.json();
-    return product;
+    // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 300));
+    return localProducts.find(product => product.id === id) || null;
   } catch (error) {
-    console.error('Error fetching product:', error);
-    return null;
+    console.error('Error loading product:', error);
+    return localProducts.find(product => product.id === id) || null;
   }
 };
 
 export const fetchCategories = async () => {
   try {
-    const response = await fetch('https://fakestoreapi.com/products/categories');
-    const categories = await response.json();
-    return categories;
+    // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 200));
+    return localCategories;
   } catch (error) {
-    console.error('Error fetching categories:', error);
-    return ["electronics", "jewelery", "men's clothing", "women's clothing"];
+    console.error('Error loading categories:', error);
+    return localCategories;
   }
+};
+
+// Helper function to get products by category
+export const getProductsByCategory = (category) => {
+  return localProducts.filter(product => product.category === category);
+};
+
+// Helper function to get products by level
+export const getProductsByLevel = (level) => {
+  return localProducts.filter(product => product.level === level);
+};
+
+// Helper function to search products
+export const searchProducts = (query) => {
+  const lowercaseQuery = query.toLowerCase();
+  return localProducts.filter(product => 
+    product.title.toLowerCase().includes(lowercaseQuery) ||
+    product.category.toLowerCase().includes(lowercaseQuery) ||
+    product.level.toLowerCase().includes(lowercaseQuery) ||
+    (product.description && product.description.toLowerCase().includes(lowercaseQuery))
+  );
 };

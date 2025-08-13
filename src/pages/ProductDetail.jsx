@@ -95,7 +95,7 @@ const ProductDetail = () => {
               <img
                 src={product.image}
                 alt={product.title}
-                className="w-full h-96 object-contain object-center"
+                className="w-full h-96 object-contain object-center bg-primary-50 rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
               />
             </div>
 
@@ -111,7 +111,7 @@ const ProductDetail = () => {
               </div>
 
               {/* Rating */}
-              <div className="flex items-center mb-4">
+              {/* <div className="flex items-center mb-4">
                 <div className="flex items-center">
                   {[...Array(5)].map((_, i) => (
                     <Star
@@ -127,78 +127,73 @@ const ProductDetail = () => {
                 <span className="ml-2 text-sm text-gray-600">
                   {formatRating(product.rating?.rate || 0)} ({product.rating?.count || 0} reviews)
                 </span>
-              </div>
+              </div> */}
 
               {/* Price */}
               <div className="mb-6">
-                <span className="text-3xl font-bold text-primary-600">
-                  {formatPrice(product.price)}
-                </span>
-              </div>
+  <span className="text-3xl font-bold text-primary-600">
+    {formatPrice(product.price)}
+  </span>
+</div>
 
               {/* Description */}
-              <div className="mb-8">
+              {/* <div className="mb-8">
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">Description</h3>
                 <p className="text-gray-700 leading-relaxed">
                   {product.description}
                 </p>
-              </div>
+              </div> */}
 
               {/* Quantity Selector */}
               <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Quantity
-                </label>
-                <div className="flex items-center space-x-3">
-                  <button
-                    onClick={decrementQuantity}
-                    className="p-2 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
-                  >
-                    <Minus className="w-4 h-4" />
-                  </button>
-                  <span className="text-xl font-semibold min-w-[3rem] text-center">
-                    {quantity}
-                  </span>
-                  <button
-                    onClick={incrementQuantity}
-                    className="p-2 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
-                  >
-                    <Plus className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
+  <label className="block text-sm font-medium text-primary-700 mb-2">
+    Quantity
+  </label>
+  <div className="flex items-center space-x-3">
+    <button
+      onClick={decrementQuantity}
+      className="p-2 border border-primary-200 rounded-md hover:bg-primary-50 transition-colors"
+    >
+      <Minus className="w-4 h-4 text-primary-600" />
+    </button>
+    <span className="text-xl font-semibold min-w-[3rem] text-center">
+      {quantity}
+    </span>
+    <button
+      onClick={incrementQuantity}
+      className="p-2 border border-primary-200 rounded-md hover:bg-primary-50 transition-colors"
+    >
+      <Plus className="w-4 h-4 text-primary-600" />
+    </button>
+  </div>
+</div>
 
               {/* Add to Cart Button */}
               <button
-                onClick={handleAddToCart}
-                className="btn-primary w-full py-3 text-lg flex items-center justify-center space-x-2 hover:scale-105 transition-transform duration-200"
-              >
-                <ShoppingCart className="w-5 h-5" />
-                <span>Add to Cart - {formatPrice(product.price * quantity)}</span>
-              </button>
+  onClick={handleAddToCart}
+  className="w-full py-3 text-lg flex items-center justify-center space-x-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg shadow-md hover:scale-105 transition-transform duration-200"
+>
+  <ShoppingCart className="w-5 h-5" />
+  <span>Add to Cart – {formatPrice(product.price * quantity)}</span>
+</button>
 
               {/* Product Features */}
-              <div className="mt-8 pt-8 border-t border-gray-200">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Product Features</h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-primary-600 rounded-full mr-3"></div>
-                    High quality materials
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-primary-600 rounded-full mr-3"></div>
-                    Free shipping on orders over $50
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-primary-600 rounded-full mr-3"></div>
-                    30-day return policy
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-primary-600 rounded-full mr-3"></div>
-                    Customer satisfaction guaranteed
-                  </li>
-                </ul>
-              </div>
+              <div className="mt-8 pt-8 border-t border-primary-100">
+  <h3 className="text-lg font-semibold text-primary-800 mb-4 font-serif">Product Features</h3>
+  <ul className="space-y-2 text-gray-700">
+    {[
+      'High quality materials',
+      'Free shipping on orders over $50',
+      '30-day return policy',
+      'Customer satisfaction guaranteed',
+    ].map((feature, idx) => (
+      <li key={idx} className="flex items-center">
+        <div className="w-2 h-2 bg-primary-500 rounded-full mr-3"></div>
+        {feature}
+      </li>
+    ))}
+  </ul>
+</div>
             </div>
           </div>
         </div>
