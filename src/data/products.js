@@ -32,7 +32,25 @@ export const localProducts = [
   { id: 24, title: "Math Workbook", price: 300, image: "/a3/workbook/math_3.jpg", level: "Level 3", category: "workbook" },
   { id: 25, title: "Islamiat", price: 300, image: "/a4/Islamiat_Title/islamiyat_3.jpg", level: "Level 3", category: "islamiat" },
   { id: 26, title: "Art & Concept", price: 300, image: "/a4/Art_Concept_Title/art_and_concept_3.jpg", level: "Level 3", category: "art" },
-  { id: 27, title: "Brainy Builder (Reading & Activity)", price: 300, image: "/a3/Brainy_Builder/brainy_builder_3.jpg", level: "Level 3", category: "readers" }
+  { id: 27, title: "Brainy Builder (Reading & Activity)", price: 300, image: "/a3/Brainy_Builder/brainy_builder_3.jpg", level: "Level 3", category: "readers" },
+
+  // --------- Mathematics Books for All Levels ---------
+  { id: 28, title: "MATHEMATICS 1", price: 1400, image: "/a3/mathbooks_7/math_1.jpg", level: "class 1", category: "books" },
+  { id: 28, title: "MATHEMATICS 2", price: 1400, image: "/a3/mathbooks_7/math_2.jpg", level: "class 2", category: "books" },
+  { id: 28, title: "MATHEMATICS 3", price: 1400, image: "/a3/mathbooks_7/math_3.jpg", level: "class 3", category: "books" },
+  { id: 28, title: "MATHEMATICS 4", price: 1400, image: "/a3/mathbooks_7/math_4.jpg", level: "class 4", category: "books" },
+  { id: 28, title: "MATHEMATICS 5", price: 1400, image: "/a3/mathbooks_7/math_5.jpg", level: "class 5", category: "books" },
+  { id: 28, title: "MATHEMATICS 6", price: 1400, image: "/a3/mathbooks_7/math_6.jpg", level: "class 6", category: "books" },
+  { id: 28, title: "MATHEMATICS 7", price: 1400, image: "/a3/mathbooks_7/math_7.jpg", level: "class 7", category: "books" },
+  
+  // ------------- Science Books for All Levels -------------
+  { id: 28, title: "SCIENCE 1", price: 1400, image: "/a3/sciencebooks_7/science_1.jpg", level: "class 1", category: "books" },
+  { id: 28, title: "SCIENCE 2", price: 1400, image: "/a3/sciencebooks_7/science_2.jpg", level: "class 2", category: "books" },
+  { id: 28, title: "SCIENCE 3", price: 1400, image: "/a3/sciencebooks_7/science_3.jpg", level: "class 3", category: "books" },
+  { id: 28, title: "SCIENCE 4", price: 1400, image: "/a3/sciencebooks_7/science_4.jpg", level: "class 4", category: "books" },
+  { id: 28, title: "SCIENCE 5", price: 1400, image: "/a3/sciencebooks_7/science_5.jpg", level: "class 5", category: "books" },
+  { id: 28, title: "SCIENCE 6", price: 1400, image: "/a3/sciencebooks_7/science_6.jpg", level: "class 6", category: "books" },
+  { id: 28, title: "SCIENCE 7", price: 1400, image: "/a3/sciencebooks_7/science_7.jpg", level: "class 7", category: "books" },
 ];
 
 
