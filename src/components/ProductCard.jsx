@@ -33,12 +33,14 @@ const ProductCard = ({ product }) => {
       <h3 className="text-sm font-serif font-semibold text-primary-800 line-clamp-2 group-hover:text-primary-600 transition-colors duration-200">
         {truncateText(product.title, 60)}
       </h3>
+      <span className="text-sm text-gray-500">{product.level}</span>
 
       {/* Price & Button */}
       <div className="mt-3 flex items-center justify-between">
         <span className="text-lg font-bold text-primary-600 bg-primary-50 px-2 py-1 rounded">
           {formatPrice(product.price)}
         </span>
+        
         <button
           onClick={handleAddToCart}
           className="flex items-center gap-1 bg-primary-500 text-white text-sm px-3 py-2 rounded-md hover:bg-primary-600 hover:scale-105 transition-all duration-200 shadow-sm"

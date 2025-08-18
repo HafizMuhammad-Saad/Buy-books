@@ -1,114 +1,40 @@
 // Your own product data - Educational Books and Materials
+// Local products data
 export const localProducts = [
-  {
-    id: 1,
-    title: "Brainy Builder A3 - Complete Set",
-    price: 299.99,
-    image: "/a3/Brainy Builder a3/Artboard 4.jpg",
-    level: "A3",
-    category: "workbook",
-    description: "Comprehensive A3 workbook set covering all essential topics for grade 3 students with engaging activities and colorful illustrations."
-  },
-  {
-    id: 2,
-    title: "Mathematics 1-7 Series",
-    price: 199.99,
-    image: "/a3/maths 1-7/Artboard 1 copy.jpg",
-    level: "1-7",
-    category: "mathematics",
-    description: "Complete mathematics series from grade 1 to 7 with progressive learning approach and practical examples."
-  },
-  {
-    id: 3,
-    title: "Science Explorer 1-7",
-    price: 249.99,
-    image: "/a3/science 1-7/Artboard 1.jpg",
-    level: "1-7",
-    category: "science",
-    description: "Interactive science series covering physics, chemistry, and biology with hands-on experiments and real-world applications."
-  },
-  {
-    id: 4,
-    title: "A4 Art Concept Series",
-    price: 179.99,
-    image: "/a4/Art Concept Title/Artboard 1.jpg",
-    level: "A4",
-    category: "art",
-    description: "Creative art workbook series designed to enhance artistic skills and creative thinking for grade 4 students."
-  },
-  {
-    id: 5,
-    title: "Islamiat Studies A4",
-    price: 159.99,
-    image: "/a4/Islamiat Title/Artboard 4.jpg",
-    level: "A4",
-    category: "islamiat",
-    description: "Comprehensive Islamic studies workbook covering Quran, Hadith, and Islamic history for grade 4 students."
-  },
-  {
-    id: 6,
-    title: "English Readers Collection",
-    price: 129.99,
-    image: "/a4/readers/Artboard 1.jpg",
-    level: "A4",
-    category: "readers",
-    description: "Engaging English reader series with phonics, vocabulary building, and comprehension exercises."
-  },
-  {
-    id: 7,
-    title: "Urdu Readers Collection",
-    price: 129.99,
-    image: "/a4/readers/Urdu back.jpg",
-    level: "A4",
-    category: "readers",
-    description: "Comprehensive Urdu reader series with poetry, stories, and language exercises for grade 4 students."
-  },
-  {
-    id: 8,
-    title: "Workbook Collection A3",
-    price: 349.99,
-    image: "/a3/workbook/Artboard 1.jpg",
-    level: "A3",
-    category: "workbook",
-    description: "Complete A3 workbook collection covering all subjects with practice exercises and assessment tools."
-  },
-  {
-    id: 9,
-    title: "Mathematics Practice Book 1-7",
-    price: 89.99,
-    image: "/a3/maths 1-7/Artboard 9.jpg",
-    level: "1-7",
-    category: "mathematics",
-    description: "Additional practice book for mathematics with challenging problems and detailed solutions."
-  },
-  {
-    id: 10,
-    title: "Science Lab Manual 1-7",
-    price: 119.99,
-    image: "/a3/science 1-7/Artboard 2.jpg",
-    level: "1-7",
-    category: "science",
-    description: "Hands-on science lab manual with step-by-step experiments and safety guidelines."
-  },
-  {
-    id: 11,
-    title: "Brainy Builder Workbook Set",
-    price: 399.99,
-    image: "/a3/Brainy Builder a3/Artboard 4 copy.jpg",
-    level: "A3",
-    category: "workbook",
-    description: "Premium workbook set with laminated pages and interactive learning tools for grade 3."
-  },
-  {
-    id: 12,
-    title: "Art & Craft Activity Book A4",
-    price: 149.99,
-    image: "/a4/Art Concept Title/Artboard 1 copy.jpg",
-    level: "A4",
-    category: "art",
-    description: "Creative art and craft activity book with supplies and step-by-step instructions."
-  }
+  // -------- LEVEL 1 --------
+  { id: 1, title: "English Reader", price: 300, image: "/public/a4/readers/english_1.jpg", level: "Level 1", category: "readers" },
+  { id: 2, title: "Urdu Reader", price: 300, image: "/public/a4/readers/urdu_1.jpg", level: "Level 1", category: "readers" },
+  { id: 3, title: "Math Reader", price: 300, image: "/public/a4/readers/math_1.jpg", level: "Level 1", category: "mathematics" },
+  { id: 4, title: "English Workbook", price: 300, image: "/public/a3/workbook/english_1.jpg", level: "Level 1", category: "workbook" },
+  { id: 5, title: "Urdu Workbook", price: 300, image: "/public/a3/workbook/urdu_1.jpg", level: "Level 1", category: "workbook" },
+  { id: 6, title: "Math Workbook", price: 300, image: "/public/a3/workbook/math_1.jpg", level: "Level 1", category: "workbook" },
+  { id: 7, title: "Islamiat", price: 300, image: "/public/a4/Islamiat_Title/islamiyat_1.jpg", level: "Level 1", category: "islamiat" },
+  { id: 8, title: "Art & Concept", price: 300, image: "/public/a4/Art_Concept_Title/art_and_concept_1.jpg", level: "Level 1", category: "art" },
+  { id: 9, title: "Brainy Builder (Reading & Activity)", price: 300, image: "/public/a3/Brainy_Builder/brainy_builder_1.jpg", level: "Level 1", category: "readers" },
+
+  // -------- LEVEL 2 --------
+  { id: 10, title: "English Reader", price: 300, image: "/public/a4/readers/english_2.jpg", level: "Level 2", category: "readers" },
+  { id: 11, title: "Urdu Reader", price: 300, image: "/public/a4/readers/urdu_2.jpg", level: "Level 2", category: "readers" },
+  { id: 12, title: "Math Reader", price: 300, image: "/public/a4/readers/math_1.jpg", level: "Level 2", category: "mathematics" },
+  { id: 13, title: "English Workbook", price: 300, image: "/public/a3/workbook/english_2.jpg", level: "Level 2", category: "workbook" },
+  { id: 14, title: "Urdu Workbook", price: 300, image: "/public/a3/workbook/urdu_2.jpg", level: "Level 2", category: "workbook" },
+  { id: 15, title: "Math Workbook", price: 300, image: "/public/a3/workbook/math_2.jpg", level: "Level 2", category: "workbook" },
+  { id: 16, title: "Islamiat", price: 300, image: "/public/a4/Islamiat_Title/islamiyat_2.jpg", level: "Level 2", category: "islamiat" },
+  { id: 17, title: "Art & Concept", price: 300, image: "/public/a4/Art_Concept_Title/art_and_concept_2.jpg", level: "Level 2", category: "art" },
+  { id: 18, title: "Brainy Builder (Reading & Activity)", price: 300, image: "/public/a3/Brainy_Builder/brainy_builder_2.jpg", level: "Level 2", category: "readers" },
+
+  // -------- LEVEL 3 --------
+  { id: 19, title: "English Reader", price: 300, image: "/public/a4/readers/english_3.jpg", level: "Level 3", category: "readers" },
+  { id: 20, title: "Urdu Reader", price: 300, image: "/public/a4/readers/urdu_3.jpg", level: "Level 3", category: "readers" },
+  { id: 21, title: "Math Reader", price: 300, image: "/public/a4/readers/math_1.jpg", level: "Level 3", category: "mathematics" },
+  { id: 22, title: "English Workbook", price: 300, image: "/public/a3/workbook/english_3.jpg", level: "Level 3", category: "workbook" },
+  { id: 23, title: "Urdu Workbook", price: 300, image: "/public/a3/workbook/urdu_3.jpg", level: "Level 3", category: "workbook" },
+  { id: 24, title: "Math Workbook", price: 300, image: "/public/a3/workbook/math_3.jpg", level: "Level 3", category: "workbook" },
+  { id: 25, title: "Islamiat", price: 300, image: "/public/a4/Islamiat_Title/islamiyat_3.jpg", level: "Level 3", category: "islamiat" },
+  { id: 26, title: "Art & Concept", price: 300, image: "/public/a4/Art_Concept_Title/art_and_concept_3.jpg", level: "Level 3", category: "art" },
+  { id: 27, title: "Brainy Builder (Reading & Activity)", price: 300, image: "/public/a3/Brainy_Builder/brainy_builder_3.jpg", level: "Level 3", category: "readers" }
 ];
+
 
 // Categories based on your educational content
 export const localCategories = [
