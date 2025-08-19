@@ -26,8 +26,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
-              <img src="/logo.png" alt="Logo" className="w-8 h-8 text-white" />
-              <span className="text-xl font-bold text-white">Tec Puplisher</span>
+              <img src="/logo.png" alt="Logo" className="w-32 h-auto text-white filter invert" />
             </Link>
           </div>
 
