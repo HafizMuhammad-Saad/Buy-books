@@ -7,6 +7,20 @@ import { formatPrice, truncateText, formatRating } from '../utils/format';
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
 
+
+  const getBadgeColor = (level) => {
+    switch (level) {
+      case 'For 3+':
+        return 'bg-primary-200 text-primary-800';
+      case 'For 4+':
+        return 'bg-blue-200 text-blue-800';
+      case 'For 5+':
+        return 'bg-yellow-200 text-yellow-800';
+      default:
+        return 'bg-primary-50 text-primary-600';
+    }
+  };
+
   const handleAddToCart = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -18,13 +32,19 @@ const ProductCard = ({ product }) => {
   <Link to={`/products/${product.id}`} className="block">
     
     {/* Image */}
-    <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-primary-50">
+    <div className="relative aspect-w-1 aspect-h-1 w-full overflow-hidden bg-primary-50">
+      {/* Badge */}
+      
+
       <img
         src={product.image}
         alt={product.title}
         className="w-full h-64 object-contain object-center transform group-hover:scale-105 transition-transform duration-500 ease-out"
         loading="lazy"
       />
+      <div className={`absolute top-2 left-2 px-2 py-1 text-xs rounded ${getBadgeColor(product?.age)}`}>
+         {product?.age} 
+       </div>
     </div>
 
     {/* Content */}
@@ -52,6 +72,7 @@ const ProductCard = ({ product }) => {
     </div>
   </Link>
 </div>
+
 
   );
 };

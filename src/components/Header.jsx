@@ -20,13 +20,13 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-primary-600 shadow-sm border-b border-primary-700 sticky top-0 z-50">
+    <header className="bg-primary-200 shadow-sm border-b border-primary-700 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
-              <img src="/logo.png" alt="Logo" className="w-32 h-auto text-white filter invert" />
+              <img src="/logo.png" alt="Logo" className="w-32 h-auto text-white" />
             </Link>
           </div>
 
@@ -38,8 +38,8 @@ const Header = () => {
                 to={item.href}
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
                   isActive(item.href)
-                    ? 'text-white bg-primary-700'
-                    : 'text-primary-100 hover:text-white hover:bg-primary-700'
+                    ? 'text-primary-800 bg-primary-400'
+                    : 'text-primary-800 hover:text-primary-900 hover:bg-primary-100'
                 }`}
               >
                 {item.name}
@@ -51,7 +51,7 @@ const Header = () => {
           <div className="flex items-center space-x-4">
             <Link
               to="/cart"
-              className="relative p-2 text-primary-100 hover:text-white transition-colors duration-200"
+              className="relative p-2 text-primary-800 hover:text-primary-900 transition-colors duration-200"
             >
               <ShoppingBag className="w-6 h-6" />
               {cartItemsCount > 0 && (

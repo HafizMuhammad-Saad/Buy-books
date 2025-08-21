@@ -5,6 +5,7 @@ import { useCart } from '../contexts/CartContext';
 import { ProductDetailSkeleton } from '../components/LoadingSkeleton';
 import { fetchProductById } from '../data/products';
 import { formatPrice, formatRating, capitalizeFirst } from '../utils/format';
+import BookReader from '../components/BookReader';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -91,13 +92,24 @@ const ProductDetail = () => {
         <div className="bg-white shadow-sm rounded-lg overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
             {/* Product Image */}
-            <div className="aspect-w-1 aspect-h-1">
-              <img
+            {/* <div className="aspect-w-1 aspect-h-1"> */}
+              {/* <img
                 src={product.image}
                 alt={product.title}
                 className="w-full h-96 object-contain object-center bg-primary-50 rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
-              />
-            </div>
+              /> */}
+
+              <BookReader
+    pages={[
+      product.image, // cover (front)
+      "https://www.dickimaw-books.com/fiction/crime/the-private-enemy/samples/samplepage-016.png",
+      "https://i.redd.it/xh2i0uywvtt61.png",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2GO7slSMGmyZ89TM4jR_ovyu-rn4slYjs4fse9_n3Wl_C5I2sNygohoYORzJ8UC1gk_U&usqp=CAU",
+      "https://www.wikihow.com/images/thumb/4/4b/Short-Novel-Excerpt.png/340px-Short-Novel-Excerpt.png",
+    ]}
+  />
+            {/* </div> */}
+
 
             {/* Product Information */}
             <div>
@@ -110,24 +122,7 @@ const ProductDetail = () => {
                 </h1>
               </div>
 
-              {/* Rating */}
-              {/* <div className="flex items-center mb-4">
-                <div className="flex items-center">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`w-5 h-5 ${
-                        i < Math.floor(product.rating?.rate || 0)
-                          ? 'text-yellow-400 fill-current'
-                          : 'text-gray-300'
-                      }`}
-                    />
-                  ))}
-                </div>
-                <span className="ml-2 text-sm text-gray-600">
-                  {formatRating(product.rating?.rate || 0)} ({product.rating?.count || 0} reviews)
-                </span>
-              </div> */}
+              
 
               {/* Price */}
               <div className="mb-6">
