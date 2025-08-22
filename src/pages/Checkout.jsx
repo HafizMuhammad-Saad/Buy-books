@@ -59,7 +59,7 @@ const Checkout = () => {
       formData.append('pricing', JSON.stringify({ subtotal, shipping, tax, total }));
       formData.append('paymentScreenshot', paymentScreenshot);
 
-      await axios.post('http://localhost:5000/api/orders', formData, {
+      await axios.post('http://tecai.site:5000/orders', formData, {
         headers: {'Content-Type': 'multipart/form-data'}
       });
 

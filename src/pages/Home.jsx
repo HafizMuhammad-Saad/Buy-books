@@ -4,6 +4,7 @@ import { ArrowRight, ShoppingBag, Star, Users, Shield } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
 import { ProductGridSkeleton } from '../components/LoadingSkeleton';
 import { fetchProducts } from '../data/products';
+import HeroSlider from '../components/HeroSlider';
 
 const Home = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -49,28 +50,9 @@ const Home = () => {
 ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary-600 via-primary-500 to-primary-400 text-white">
-  <div className="absolute inset-0 bg-[url('/images/paper-texture.png')] opacity-10"></div>
-  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-    <div className="text-center">
-      <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 animate-fade-in">
-        Welcome to Tec Publisher
-      </h1>
-      <p className="text-xl md:text-2xl mb-8 text-primary-100 animate-fade-in">
-        Where every book tells a story
-      </p>
-      <Link
-        to="/products"
-        className="inline-flex items-center px-8 py-4 bg-white text-primary-600 rounded-lg font-semibold hover:bg-primary-50 hover:scale-105 transition-all duration-300 shadow-lg animate-slide-up"
-      >
-        Shop Now
-        <ArrowRight className="ml-2 w-5 h-5" />
-      </Link>
-    </div>
-  </div>
-</section>
+    <div className="min-h-52 bg-gray-50">
+      {/* Hero Section - Replaced with Slider */}
+      <HeroSlider />
 
       {/* Features Section */}
       <section className="py-16 bg-white">

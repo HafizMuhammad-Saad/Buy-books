@@ -2,7 +2,7 @@
 // Local products data
 export const localProducts = [
   // -------- LEVEL 1 --------
-  { id: 1, title: "English Reader", age: 'For 3+', price: 300, image: "/a4/readers/english_1.jpg", level: "Level 1", category: "readers" },
+  { id: 1, title: "English Reader",  age: 'For 3+', price: 300, image: "/a4/readers/english_1.jpg", level: "Level 1", category: "readers" },
   { id: 2, title: "Urdu Reader", age: 'For 3+', price: 300, image: "/a4/readers/urdu_1.jpg", level: "Level 1", category: "readers" },
   { id: 3, title: "Math Reader", age: 'For 3+', price: 300, image: "/a4/readers/math_1.jpg", level: "Level 1", category: "readers" },
   { id: 4, title: "English Workbook", age: 'For 3+', price: 600, image: "/a3/workbook/english_1.jpg", level: "Level 1", category: "workbook" },
@@ -51,16 +51,43 @@ export const localProducts = [
   { id: 40, title: "SCIENCE 5", price: 1400, image: "/a3/sciencebooks_7/science_5.jpg", level: "class 5", category: "books" },
   { id: 41, title: "SCIENCE 6", price: 1400, image: "/a3/sciencebooks_7/science_6.jpg", level: "class 6", category: "books" },
   { id: 42, title: "SCIENCE 7", price: 1400, image: "/a3/sciencebooks_7/science_7.jpg", level: "class 7", category: "books" },
+
+// ------------- English Activity Books for All Levels -------------
+  { id: 43, title: "English Activity 1", price: 1400, image: "/worksheet/English/class 1.jpg", level: "class 1", category: "activity books" },
+  { id: 44, title: "English Activity 2", price: 1400, image: "/worksheet/English/class 2.jpg", level: "class 2", category: "activity books" },
+  { id: 45, title: "English Activity 3", price: 1400, image: "/worksheet/English/class 3.jpg", level: "class 3", category: "activity books" },
+  { id: 46, title: "English Activity 4", price: 1400, image: "/worksheet/English/class 4.jpg", level: "class 4", category: "activity books" },
+  { id: 47, title: "English Activity 5", price: 1400, image: "/worksheet/English/class 5.jpg", level: "class 5", category: "activity books" },
+  { id: 48, title: "English Activity 6", price: 1400, image: "/worksheet/English/class 6.jpg", level: "class 6", category: "activity books" },
+  { id: 49, title: "English Activity 7", price: 1400, image: "/worksheet/English/class 7.jpg", level: "class 7", category: "activity books" },
+// ------------- Math Activity Books for All Levels -------------
+  { id: 50, title: "Maths Activity 1", price: 1400, image: "/worksheet/Maths/class_1.jpg", level: "class 1", category: "activity books" },
+  { id: 51, title: "Maths Activity 2", price: 1400, image: "/worksheet/Maths/class_2.jpg", level: "class 2", category: "activity books" },
+  { id: 56, title: "Maths Activity 3", price: 1400, image: "/worksheet/Maths/class_3.jpg", level: "class 3", category: "activity books" },
+  { id: 57, title: "Maths Activity 4", price: 1400, image: "/worksheet/Maths/class_4.jpg", level: "class 4", category: "activity books" },
+  { id: 58, title: "Maths Activity 5",  price: 1400, image: "/worksheet/Maths/class_5.jpg", level: "class 5", category: "activity books" },
+  { id: 59, title: "Maths Activity 6", price: 1400, image: "/worksheet/Maths/class_6.jpg", level: "class 6", category: "activity books" },
+  { id: 60, title: "Maths Activity 7", price: 1400, image: "/worksheet/Maths/class_7.jpg", level: "class 7", category: "activity books" },
+  { id: 61, title: "Maths Activity 8", price: 1400, image: "/worksheet/Maths/class_8.jpg", level: "class 8", category: "activity books" },
+// ------------- Urdu Activity Books for All Levels -------------
+  { id: 62, title: "Urdu Activity 1", price: 1400, image: "/worksheet/Urdu/class_(1).jpg", level: "class 1", category: "activity books" },
+  { id: 63, title: "Urdu Activity 2", price: 1400, image: "/worksheet/Urdu/class_(2).jpg", level: "class 2", category: "activity books" },
+  { id: 64, title: "Urdu Activity 3", price: 1400, image: "/worksheet/Urdu/class_(3).jpg", level: "class 3", category: "activity books" },
+  { id: 65, title: "Urdu Activity 4", price: 1400, image: "/worksheet/Urdu/class_(4).jpg", level: "class 4", category: "activity books" },
+  { id: 66, title: "Urdu Activity 5", price: 1400, image: "/worksheet/Urdu/class_(5).jpg", level: "class 5", category: "activity books" },
+  { id: 67, title: "Urdu Activity 6", price: 1400, image: "/worksheet/Urdu/class_(6).jpg", level: "class 6", category: "activity books" },
+  { id: 68, title: "Urdu Activity 7", price: 1400, image: "/worksheet/Urdu/class_(7).jpg", level: "class 7", category: "activity books" },
+  { id: 69, title: "Urdu Activity 8", price: 1400, image: "/worksheet/Urdu/class_(8).jpg", level: "class 8", category: "activity books" },
+
 ];
+
 
 
 // Categories based on your educational content
 export const localCategories = [
   "workbook",
-  "mathematics", 
-  "science",
-  "art",
-  "islamiat",
+  "activity books", 
+  "books",
   "readers"
 ];
 

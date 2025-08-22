@@ -36,12 +36,24 @@ const ProductCard = ({ product }) => {
       {/* Badge */}
       
 
-      <img
+      {/* <img
         src={product.image}
         alt={product.title}
         className="w-full h-64 object-contain object-center transform group-hover:scale-105 transition-transform duration-500 ease-out"
         loading="lazy"
-      />
+      /> */}
+ {
+                product.flipbook ? (
+                  <iframe allowFullScreen="allowfullscreen" allow="clipboard-write" scrolling="no" className="fp-iframe" src={product.flipbook} style={{border: '1px solid lightgray', width: '100%', height: '400px'}}></iframe>
+                ) : (
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="w-full h-full object-contain object-center bg-primary-50 rounded-lg shadow-md"
+                    loading="lazy"
+                  />
+                )
+              }
       <div className={`absolute top-2 left-2 px-2 py-1 text-xs rounded ${getBadgeColor(product?.age)}`}>
          {product?.age} 
        </div>

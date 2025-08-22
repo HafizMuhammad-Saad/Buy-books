@@ -13,7 +13,7 @@ const OrderDetail = () => {
   const [status, setStatus] = useState('');
   const [notes, setNotes] = useState('');
 
-  const API_BASE = 'http://localhost:5000/api';
+  const API_BASE = 'http://tecai.site:5000/api';
 
   useEffect(() => {
     const fetchOrder = async () => {
