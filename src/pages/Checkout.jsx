@@ -16,6 +16,9 @@ const Checkout = () => {
     phone: '',
     address: ''
   });
+
+    const API_BASE = import.meta.env.VITE_API_BASE;
+
   const [orderId] = useState(() => 'ORD-' + Date.now().toString().slice(-8));
 
   const subtotal = getCartTotal();
@@ -59,7 +62,7 @@ const Checkout = () => {
       formData.append('pricing', JSON.stringify({ subtotal, shipping, tax, total }));
       formData.append('paymentScreenshot', paymentScreenshot);
 
-      await axios.post('/api/orders', formData, {
+      await axios.post(`${API_BASE}/orders`, formData, {
         headers: {'Content-Type': 'multipart/form-data'}
       });
 

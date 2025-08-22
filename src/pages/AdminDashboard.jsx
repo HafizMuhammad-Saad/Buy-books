@@ -18,7 +18,7 @@ const AdminDashboard = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  const API_BASE = '/api';
+  const API_BASE = import.meta.env.VITE_API_BASE;
 
   const fetchOrders = async () => {
     try {

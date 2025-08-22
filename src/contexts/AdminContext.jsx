@@ -16,7 +16,7 @@ export const AdminProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useState(localStorage.getItem('adminToken'));
 
-  const API_BASE = '/api';
+  const API_BASE = import.meta.env.VITE_API_BASE;
 
   // Configure axios interceptor for token
   useEffect(() => {

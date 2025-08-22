@@ -13,7 +13,7 @@ const OrderDetail = () => {
   const [status, setStatus] = useState('');
   const [notes, setNotes] = useState('');
 
-  const API_BASE = '/api';
+  const API_BASE = import.meta.env.VITE_API_BASE;
 
   useEffect(() => {
     const fetchOrder = async () => {
