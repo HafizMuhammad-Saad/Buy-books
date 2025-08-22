@@ -13,7 +13,7 @@ const OrderDetail = () => {
   const [status, setStatus] = useState('');
   const [notes, setNotes] = useState('');
 
-  const API_BASE = 'http://tecai.site:5000/api';
+  const API_BASE = '/api';
 
   useEffect(() => {
     const fetchOrder = async () => {
@@ -205,7 +205,7 @@ const OrderDetail = () => {
             <div className="bg-white rounded-lg shadow p-6">
               <h3 className="text-lg font-medium text-gray-900 mb-4">Payment Screenshot</h3>
               <img
-                src={`http://localhost:5000/uploads/payment-screenshots/${order.paymentScreenshot}`}
+                src={`/api/uploads/payment-screenshots/${order.paymentScreenshot}`}
                 alt="Payment Screenshot"
                 className="w-full rounded-lg border"
               />

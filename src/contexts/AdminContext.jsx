@@ -16,7 +16,7 @@ export const AdminProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useState(localStorage.getItem('adminToken'));
 
-  const API_BASE = 'http://tecai.site:5000/api';
+  const API_BASE = '/api';
 
   // Configure axios interceptor for token
   useEffect(() => {
