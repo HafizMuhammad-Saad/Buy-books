@@ -7,40 +7,47 @@ const HeroSlider = () => {
 
   const slides = [
     {
-      image: "/a3/Brainy_Builder/brainy_builder_1.jpg",
-      title: "Brainy Builder Series",
+      image: "/world-book-day-celebration-leaderboard-banner/10519426.jpg",
+      title: "World Book Day",
       description: "Interactive learning books for young minds",
       ctaText: "Explore Series",
       ctaLink: "/products?category=brainy-builder"
     },
     {
-      image: "/a3/mathbooks_7/math_1.jpg",
-      title: "Mathematics Mastery",
+      image: "/world-book-day-template-design/11646243.jpg",
+      title: "World Book Day 2023",
       description: "Comprehensive math books for all grades",
       ctaText: "View Math Books",
       ctaLink: "/products?category=mathematics"
     },
     {
-      image: "/a3/sciencebooks_7/science_1.jpg",
-      title: "Science Explorers",
-      description: "Discover the wonders of science",
-      ctaText: "Browse Science",
-      ctaLink: "/products?category=science"
+      image: "/back-school-facebook-cover-banner-template/back_to_school_facebook_cover_banner_19.jpg",
+      title: "World Book Day 2023",
+      description: "Comprehensive math books for all grades",
+      ctaText: "View Math Books",
+      ctaLink: "/products?category=mathematics"
     },
-    {
-      image: "/a3/workbook/english_1.jpg",
-      title: "Workbook Collection",
-      description: "Practice makes perfect with our workbooks",
-      ctaText: "See Workbooks",
-      ctaLink: "/products?category=workbooks"
-    },
-    {
-      image: "/a4/readers/english_1.jpg",
-      title: "Reading Adventures",
-      description: "Engaging readers for all reading levels",
-      ctaText: "Find Readers",
-      ctaLink: "/products?category=readers"
-    }
+    // {
+    //   image: "/a3/sciencebooks_7/science_1.jpg",
+    //   title: "Science Explorers",
+    //   description: "Discover the wonders of science",
+    //   ctaText: "Browse Science",
+    //   ctaLink: "/products?category=science"
+    // },
+    // {
+    //   image: "/a3/workbook/english_1.jpg",
+    //   title: "Workbook Collection",
+    //   description: "Practice makes perfect with our workbooks",
+    //   ctaText: "See Workbooks",
+    //   ctaLink: "/products?category=workbooks"
+    // },
+    // {
+    //   image: "/a4/readers/english_1.jpg",
+    //   title: "Reading Adventures",
+    //   description: "Engaging readers for all reading levels",
+    //   ctaText: "Find Readers",
+    //   ctaLink: "/products?category=readers"
+    // }
   ];
 
   const nextSlide = () => {
@@ -65,7 +72,7 @@ const HeroSlider = () => {
   }, [currentSlide]);
 
   return (
-    <div className="relative w-full overflow-hidden" style={{ height: '50vh'}}>
+    <div className="relative w-full h-[65vh] overflow-hidden">
       {/* Slides */}
       <div className="relative w-full h-full">
         {slides.map((slide, index) => (
@@ -84,7 +91,7 @@ const HeroSlider = () => {
             </div>
             
             {/* Content Overlay */}
-            <div className="relative z-10 flex items-center justify-center h-full">
+            {/* <div className="relative z-10 flex items-center justify-center h-full">
               <div className="text-center text-white max-w-4xl px-4">
                 <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 animate-fade-in">
                   {slide.title}
@@ -100,7 +107,7 @@ const HeroSlider = () => {
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </div>
-            </div>
+            </div> */}
           </div>
         ))}
       </div>

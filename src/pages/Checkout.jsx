@@ -22,9 +22,8 @@ const Checkout = () => {
   const [orderId] = useState(() => 'ORD-' + Date.now().toString().slice(-8));
 
   const subtotal = getCartTotal();
-  const shipping = subtotal > 50 ? 0 : 9.99;
-  const tax = subtotal * 0.08;
-  const total = subtotal + shipping + tax;
+  const shipping = 200;
+  const total = subtotal + shipping;
 
   useEffect(() => {
     if (cart.length === 0) {
@@ -59,7 +58,7 @@ const Checkout = () => {
       formData.append('orderId', orderId);
       formData.append('customerInfo', JSON.stringify(customerInfo));
       formData.append('items', JSON.stringify(cart));
-      formData.append('pricing', JSON.stringify({ subtotal, shipping, tax, total }));
+      formData.append('pricing', JSON.stringify({ subtotal, shipping, total }));
       formData.append('paymentScreenshot', paymentScreenshot);
 
       await axios.post(`${API_BASE}/orders`, formData, {
@@ -97,8 +96,8 @@ I have attached the payment screenshot. Please confirm my order. Thank you!`;
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen py-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4">
         <button
           onClick={() => navigate('/cart')}
           className="btn-outline mb-6 inline-flex items-center"
@@ -129,7 +128,7 @@ I have attached the payment screenshot. Please confirm my order. Thank you!`;
                     <p className="text-sm text-gray-500">Qty: {item.quantity}</p>
                   </div>
                   <span className="font-medium text-gray-900">
-                    {formatPrice(item.price * item.quantity)}
+                    {formatPrice((item.discountedPrice ?? item.price) * item.quantity)}
                   </span>
                 </div>
               ))}
@@ -143,13 +142,13 @@ I have attached the payment screenshot. Please confirm my order. Thank you!`;
               <div className="flex justify-between">
                 <span className="text-gray-600">Shipping</span>
                 <span className="font-medium">
-                  {shipping === 0 ? 'Free' : formatPrice(shipping)}
+                  {shipping}
                 </span>
               </div>
-              <div className="flex justify-between">
+              {/* <div className="flex justify-between">
                 <span className="text-gray-600">Tax</span>
                 <span className="font-medium">{formatPrice(tax)}</span>
-              </div>
+              </div> */}
               <div className="flex justify-between text-lg font-semibold pt-2 border-t">
                 <span>Total</span>
                 <span className="text-primary-600">{formatPrice(total)}</span>

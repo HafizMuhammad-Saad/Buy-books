@@ -14,8 +14,10 @@ const Home = () => {
     const loadFeaturedProducts = async () => {
       try {
         const products = await fetchProducts();
-        // Get first 4 products as featured
-        setFeaturedProducts(products.slice(0, 4));
+        // get products that isSet true
+        const sets = products.filter(product => product.isSet === true);
+
+        setFeaturedProducts(sets);
       } catch (error) {
         console.error('Error loading featured products:', error);
       } finally {
@@ -50,12 +52,12 @@ const Home = () => {
 ];
 
   return (
-    <div className="min-h-52 bg-gray-50">
+    <div className="min-h-52">
       {/* Hero Section - Replaced with Slider */}
       <HeroSlider />
 
       {/* Features Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center mb-12">
       <h2 className="text-3xl font-bold text-primary-800 mb-4">Why Choose Us?</h2>
@@ -81,7 +83,7 @@ const Home = () => {
 </section>
 
       {/* Featured Products Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Featured Products</h2>
@@ -92,7 +94,7 @@ const Home = () => {
             <ProductGridSkeleton count={4} />
           ) : (
             <>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
                 {featuredProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}

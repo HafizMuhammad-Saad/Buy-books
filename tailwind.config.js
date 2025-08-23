@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+       backgroundImage: {
+        'stripes-red':
+          'repeating-linear-gradient(45deg, rgba(239,68,68,0.12) 0 20px, rgba(248,113,113,0.12) 20px 40px)',
+      },
       colors: {
         primary: {
          50:  '#fef2f2',

@@ -103,7 +103,11 @@ export const CartProvider = ({ children }) => {
   };
 
   const getCartTotal = () => {
-    return state.items.reduce((total, item) => total + (item.price * item.quantity), 0);
+    return state.items.reduce((total, item) => {
+    // prefer discountedPrice if available, otherwise use normal price
+    const unitPrice = item.discountedPrice ?? item.price;
+    return total + (unitPrice * item.quantity);
+  }, 0);
   };
 
   const getCartItemsCount = () => {

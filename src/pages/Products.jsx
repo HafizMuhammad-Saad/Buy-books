@@ -4,6 +4,7 @@ import ProductCard from '../components/ProductCard';
 import { ProductGridSkeleton } from '../components/LoadingSkeleton';
 import { fetchProducts, fetchCategories } from '../data/products';
 import { capitalizeFirst } from '../utils/format';
+import { normalizeLevel } from "../utils/normalize";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -49,14 +50,16 @@ const Products = () => {
 
     // Filter by level
     if (selectedLevel !== 'all') {
-      filtered = filtered.filter(product => product.level === selectedLevel);
+       filtered = filtered.filter(
+    (product) => normalizeLevel(product.level) === normalizeLevel(selectedLevel)
+  );
     }
 
     // Filter by search query
     if (searchQuery) {
       filtered = filtered.filter(product =>
         product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.description.toLowerCase().includes(searchQuery.toLowerCase())
+        product?.description?.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
 
@@ -82,8 +85,10 @@ const Products = () => {
   }, [products, selectedCategory, selectedLevel, searchQuery, sortBy]);
 
   // Get unique levels from products
-  const levels = [...new Set(products.map(product => product.level))].sort();
-
+const levels = [
+  "all",
+  ...new Set(products.map((p) => normalizeLevel(p.level))),
+].sort();
   const clearFilters = () => {
     setSelectedCategory('all');
     setSelectedLevel('all');
@@ -117,7 +122,7 @@ const Products = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">

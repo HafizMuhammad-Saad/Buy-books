@@ -50,13 +50,16 @@ const ProductCard = ({ product }) => {
                     src={product.image}
                     alt={product.title}
                     className="w-full h-full object-contain object-center bg-primary-50 rounded-lg shadow-md"
-                    loading="lazy"
                   />
                 )
               }
-      <div className={`absolute top-2 left-2 px-2 py-1 text-xs rounded ${getBadgeColor(product?.age)}`}>
-         {product?.age} 
-       </div>
+              {
+                product.age && (
+                  <div className={`absolute top-2 left-2 px-2 py-1 text-xs rounded ${getBadgeColor(product?.age)}`}>
+                    {product?.age}
+                  </div>
+                )
+              }
     </div>
 
     {/* Content */}
@@ -70,7 +73,7 @@ const ProductCard = ({ product }) => {
       {/* Price & Button */}
       <div className="mt-3 flex items-center justify-between">
         <span className="text-lg font-bold text-primary-600 bg-primary-50 px-2 py-1 rounded">
-          {formatPrice(product.price)}
+          {formatPrice(product.discountedPrice ?? product.price)}
         </span>
         
         <button

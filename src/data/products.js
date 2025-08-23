@@ -78,7 +78,10 @@ export const localProducts = [
   { id: 67, title: "Urdu Activity 6", price: 1400, image: "/worksheet/Urdu/class_(6).jpg", level: "class 6", category: "activity books" },
   { id: 68, title: "Urdu Activity 7", price: 1400, image: "/worksheet/Urdu/class_(7).jpg", level: "class 7", category: "activity books" },
   { id: 69, title: "Urdu Activity 8", price: 1400, image: "/worksheet/Urdu/class_(8).jpg", level: "class 8", category: "activity books" },
-
+  //---------------- sets ----------------
+  { id: 70, title: "Pack Of 3 Notebooks & 4 Readers", price: 3000, discountedPrice:2800, image: "/level_1_set.jpg", level: "level 1", isSet: true, items: [], category: "books set" },
+  { id: 71, title: "Pack Of 3 Notebooks & 4 Readers", price: 3000, discountedPrice:2800, image: "/level_2_set.jpg", level: "level 2", isSet: true, items: [], category: "books set" },
+  { id: 72, title: "Pack Of 3 Notebooks & 4 Readers", price: 3000, discountedPrice:2800, image: "/level_3_set.jpg", level: "level 3", isSet: true, items: [], category: "books set" },
 ];
 
 
@@ -88,7 +91,8 @@ export const localCategories = [
   "workbook",
   "activity books", 
   "books",
-  "readers"
+  "readers",
+  "books set"
 ];
 
 // Replace API calls with local data

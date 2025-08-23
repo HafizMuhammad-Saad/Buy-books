@@ -3,10 +3,14 @@
 @tailwind utilities;
 
 @layer base {
+  html, body, #root { height: 100%; }
   body {
-    @apply font-sans antialiased;
+    @apply font-sans antialiased bg-stripes-red;
   }
 }
+
+
+
 
 @layer components {
   .btn-primary {
@@ -21,8 +25,8 @@
     @apply border border-primary-300 hover:border-primary-400 text-primary-700 hover:text-primary-900 font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
   }
   
-  .card {
-    @apply bg-white shadow-md rounded-lg overflow-hidden border border-gray-200;
+   .card {
+    @apply bg-white/80 backdrop-blur-sm shadow-md rounded-lg overflow-hidden border border-gray-200;
   }
   
   .input-field {

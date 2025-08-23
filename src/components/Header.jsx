@@ -20,7 +20,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-primary-200 shadow-sm border-b border-primary-700 sticky top-0 z-50">
+    <header className="backdrop-blur-md bg-white/70 border-b border-gray-200 shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -36,11 +36,11 @@ const Header = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                  isActive(item.href)
-                    ? 'text-primary-800 bg-primary-400'
-                    : 'text-primary-800 hover:text-primary-900 hover:bg-primary-100'
-                }`}
+                className={`px-3 py-2 text-sm font-medium transition duration-200 ${
+  isActive(item.href)
+    ? 'text-primary-800 border-b-2 border-primary-500'
+    : 'text-primary-700 hover:text-primary-900 hover:border-b-2 hover:border-primary-300'
+}`}
               >
                 {item.name}
               </Link>

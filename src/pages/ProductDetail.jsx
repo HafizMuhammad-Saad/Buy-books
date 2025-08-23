@@ -123,7 +123,7 @@ const ProductDetail = () => {
               {/* Price */}
               <div className="mb-6">
   <span className="text-3xl font-bold text-primary-600">
-    {formatPrice(product.price)}
+    {formatPrice(product.discountedPrice ? product.discountedPrice : product.price)}
   </span>
 </div>
 
@@ -165,7 +165,7 @@ const ProductDetail = () => {
   className="w-full py-3 text-lg flex items-center justify-center space-x-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg shadow-md hover:scale-105 transition-transform duration-200"
 >
   <ShoppingCart className="w-5 h-5" />
-  <span>Add to Cart – {formatPrice(product.price * quantity)}</span>
+  <span>Add to Cart – {formatPrice((product.discountedPrice ?? product.price) * quantity)}</span>
 </button>
 
               {/* Product Features */}

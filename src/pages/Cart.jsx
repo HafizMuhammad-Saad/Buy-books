@@ -22,7 +22,7 @@ const Cart = () => {
 
   if (cart.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-50 py-8">
+      <div className="min-h-screen py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center py-12">
             <ShoppingBag className="w-24 h-24 text-gray-300 mx-auto mb-6" />
@@ -44,7 +44,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Shopping Cart</h1>
@@ -84,7 +84,7 @@ const Cart = () => {
                           {item.category}
                         </p>
                         <p className="text-lg font-semibold text-primary-600">
-                          {formatPrice(item.price)}
+                          {formatPrice(item.discountedPrice? item.discountedPrice : item.price)}
                         </p>
                       </div>
                       <div className="flex items-center space-x-2">
@@ -106,7 +106,7 @@ const Cart = () => {
                       </div>
                       <div className="text-right">
                         <p className="text-lg font-semibold text-gray-900 mb-2">
-                          {formatPrice(item.price * item.quantity)}
+                          {formatPrice((item.discountedPrice ? item.discountedPrice : item.price) * item.quantity)}
                         </p>
                         <button
                           onClick={() => removeFromCart(item.id)}
@@ -138,16 +138,16 @@ const Cart = () => {
                 <div className="flex justify-between">
                   <span className="text-gray-600">Shipping</span>
                   <span className="font-medium">
-                    {getCartTotal() > 50 ? 'Free' : formatPrice(9.99)}
+                    {formatPrice(200)}
                   </span>
                 </div>
                 
-                <div className="flex justify-between">
+                {/* <div className="flex justify-between">
                   <span className="text-gray-600">Tax</span>
                   <span className="font-medium">
                     {formatPrice(getCartTotal() * 0.08)}
                   </span>
-                </div>
+                </div> */}
                 
                 <hr className="my-4" />
                 
@@ -155,21 +155,19 @@ const Cart = () => {
                   <span>Total</span>
                   <span className="text-primary-600">
                     {formatPrice(
-                      getCartTotal() + 
-                      (getCartTotal() > 50 ? 0 : 9.99) + 
-                      (getCartTotal() * 0.08)
+                      getCartTotal() + 200
                     )}
                   </span>
                 </div>
               </div>
 
-              {getCartTotal() < 50 && (
+              {/* {getCartTotal() < 50 && (
                 <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
                   <p className="text-sm text-yellow-800">
                     Add {formatPrice(50 - getCartTotal())} more for free shipping!
                   </p>
                 </div>
-              )}
+              )} */}
 
               <button
                 onClick={handleCheckout}
