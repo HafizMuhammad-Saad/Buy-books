@@ -5,6 +5,7 @@ import { useCart } from '../contexts/CartContext';
 import { formatPrice } from '../utils/format';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import axiosInstence from '../utils/axiosInstence';
 
 const Checkout = () => {
   const { cart, getCartTotal } = useCart();
@@ -61,7 +62,7 @@ const Checkout = () => {
       formData.append('pricing', JSON.stringify({ subtotal, shipping, total }));
       formData.append('paymentScreenshot', paymentScreenshot);
 
-      await axios.post(`${API_BASE}/orders`, formData, {
+      await axiosInstence.post(`/orders`, formData, {
         headers: {'Content-Type': 'multipart/form-data'}
       });
 

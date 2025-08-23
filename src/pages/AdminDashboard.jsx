@@ -4,6 +4,7 @@ import axios from 'axios';
 import { formatPrice } from '../utils/format';
 import AdminHeader from '../components/AdminHeader';
 import toast from 'react-hot-toast';
+import axiosInstence from '../utils/axiosInstence';
 
 const AdminDashboard = () => {
   const [orders, setOrders] = useState([]);
@@ -29,7 +30,7 @@ const AdminDashboard = () => {
         ...filters
       });
 
-      const response = await axios.get(`${API_BASE}/orders?${params}`);
+      const response = await axiosInstence.get(`/orders?${params}`);
       setOrders(response.data.orders);
       setTotalPages(response.data.totalPages);
     } catch (error) {
@@ -42,7 +43,7 @@ const AdminDashboard = () => {
 
   const fetchStats = async () => {
     try {
-      const response = await axios.get(`${API_BASE}/orders/stats/overview`);
+      const response = await axiosInstence.get(`/orders/stats/overview`);
       setStats(response.data.stats);
     } catch (error) {
       console.error('Error fetching stats:', error);

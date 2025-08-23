@@ -1,5 +1,7 @@
+/* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import axiosInstence from '../utils/axiosInstence';
 
 const AdminContext = createContext();
 
@@ -32,7 +34,7 @@ export const AdminProvider = ({ children }) => {
     const checkAuth = async () => {
       if (token) {
         try {
-          const response = await axios.get(`${API_BASE}/auth/me`);
+          const response = await axiosInstence.get(`/auth/me`);
           setAdmin(response.data.admin);
         } catch (error) {
           console.error('Auth check failed:', error);
@@ -47,7 +49,7 @@ export const AdminProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post(`${API_BASE}/auth/login`, {
+      const response = await axiosInstence.post(`/auth/login`, {
         email,
         password
       });

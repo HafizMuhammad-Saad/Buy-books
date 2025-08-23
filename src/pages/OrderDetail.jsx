@@ -4,6 +4,7 @@ import axios from 'axios';
 import { formatPrice } from '../utils/format';
 import AdminHeader from '../components/AdminHeader';
 import toast from 'react-hot-toast';
+import axiosInstence from '../utils/axiosInstence';
 
 const OrderDetail = () => {
   const { orderId } = useParams();
@@ -18,7 +19,7 @@ const OrderDetail = () => {
   useEffect(() => {
     const fetchOrder = async () => {
       try {
-        const response = await axios.get(`${API_BASE}/orders/${orderId}`);
+        const response = await axiosInstence.get(`/orders/${orderId}`);
         setOrder(response.data.order);
         setStatus(response.data.order.status);
         setNotes(response.data.order.notes || '');
@@ -36,7 +37,7 @@ const OrderDetail = () => {
   const handleUpdateStatus = async () => {
     try {
       setUpdating(true);
-      await axios.patch(`${API_BASE}/orders/${orderId}/status`, {
+      await axiosInstence.patch(`/orders/${orderId}/status`, {
         status,
         notes
       });
