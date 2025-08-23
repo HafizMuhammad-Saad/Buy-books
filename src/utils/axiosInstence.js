@@ -6,4 +6,13 @@ const axiosInstence = axios.create({
     withCredentials: true
 });
 
+// Auto attach token
+axiosInstence.interceptors.request.use((config) => {
+  const token = localStorage.getItem("adminToken");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 export default axiosInstence;
